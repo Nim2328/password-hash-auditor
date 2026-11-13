@@ -1,64 +1,45 @@
 # 🔐 Password Hash Auditor
 
-A beginner-friendly cybersecurity project for auditing password hashes using Python and John the Ripper.
-
-
-
-\
-
+A Python-based cybersecurity tool for auditing password hashes using John the Ripper. Designed for educational purposes and authorized security testing.
 
 ## 📌 Project Overview
 
-Password Hash Auditor is a Python-based cybersecurity tool designed to analyze password hashes and identify weak passwords through dictionary-based password auditing.
-
-The project integrates John the Ripper with Python to automate hash auditing, analyze results, calculate recovery statistics, and generate security reports.
-
-This project is developed for educational purposes and authorized security testing.
+Password Hash Auditor automates dictionary-based password auditing through Python and John the Ripper. It validates hash files, analyzes audit results, calculates password recovery statistics, and generates TXT and CSV security reports.
 
 ## 🎯 Objectives
 
-- Generate MD5 and SHA-256 password hashes.
+- Generate MD5 and SHA-256 hashes.
 - Identify possible hash types.
 - Perform dictionary-based password auditing.
 - Integrate John the Ripper with Python.
 - Identify weak and commonly used passwords.
 - Calculate cracked and remaining hash statistics.
-- Generate automated TXT and CSV reports.
-- Provide a simple command-line interface.
+- Generate automated security reports.
 
 ## 🛠️ Technologies Used
 
-| Technology      | Purpose                   |
-| --------------- | ------------------------- |
-| Python          | Main programming language |
-| Kali Linux      | Testing environment       |
-| John the Ripper | Password hash auditing    |
-| MD5             | Hash testing              |
-| SHA-256         | Hash testing              |
-| RockYou         | Dictionary wordlist       |
-| Git & GitHub    | Version control           |
+| Technology | Purpose |
+|---|---|
+| Python | Main programming language |
+| Kali Linux | Testing environment |
+| John the Ripper | Password auditing engine |
+| MD5 | Hash testing |
+| SHA-256 | Hash testing |
+| RockYou | Dictionary wordlist |
+| Git & GitHub | Version control |
 
 ## 📂 Project Structure
 
 ```text
 password-hash-auditor/
-│
 ├── docs/
 │   └── examples/
-│       ├── md5_sample.txt
-│       └── sha256_sample.txt
-│
 ├── hashes/
 │   ├── md5_hashes.txt
 │   └── sha256_hashes.txt
-│
 ├── reports/
 │   └── .gitkeep
-│
 ├── screenshots/
-│
-├── scripts/
-│
 ├── src/
 │   ├── __init__.py
 │   ├── main.py
@@ -66,13 +47,9 @@ password-hash-auditor/
 │   ├── hash_analyzer.py
 │   ├── password_auditor.py
 │   └── report_generator.py
-│
 ├── tests/
 │   ├── __init__.py
 │   └── test_password_auditor.py
-│
-├── wordlists/
-│
 ├── requirements.txt
 ├── .gitignore
 ├── LICENSE
@@ -84,8 +61,7 @@ password-hash-auditor/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/password-hash-auditor.git
-
+git clone https://github.com/Nim2328/password-hash-auditor.git
 cd password-hash-auditor
 ```
 
@@ -93,7 +69,6 @@ cd password-hash-auditor
 
 ```bash
 python3 -m venv .venv
-
 source .venv/bin/activate
 ```
 
@@ -107,14 +82,7 @@ pip install -r requirements.txt
 
 ```bash
 sudo apt update
-
 sudo apt install john -y
-```
-
-Verify installation:
-
-```bash
-john
 ```
 
 ### 5. Prepare the RockYou wordlist
@@ -123,7 +91,7 @@ john
 sudo gzip -dk /usr/share/wordlists/rockyou.txt.gz
 ```
 
-If the wordlist is already extracted, this step can be skipped.
+If it is already extracted, skip this step.
 
 ## 🚀 Usage
 
@@ -140,8 +108,6 @@ python src/main.py
        PASSWORD HASH AUDITOR
 ========================================
 
-[ MAIN MENU ]
-
 1. Audit MD5 Hashes
 2. Audit SHA-256 Hashes
 3. Audit All Hashes
@@ -150,25 +116,21 @@ python src/main.py
 0. Exit
 ```
 
-Select an option to perform the required password hash audit.
+Select an option to perform the required audit.
 
-## 📊 Features
+## ✨ Features
 
 ### 1. Hash Generation
-
-Generate MD5 and SHA-256 hashes using Python's hashlib library.
+Generate MD5 and SHA-256 hashes using Python's `hashlib` library.
 
 ### 2. Hash Analysis
-
-Identify possible hash algorithms using hexadecimal hash lengths and format validation.
+Identify possible hash algorithms through hexadecimal length and format validation.
 
 ### 3. Password Auditing
-
 Use John the Ripper to perform dictionary-based password recovery against authorized test hashes.
 
 ### 4. Automated Reporting
-
-Generate security reports containing:
+Generate TXT and CSV reports containing:
 
 - Total unique hashes
 - Successfully recovered hashes
@@ -176,68 +138,41 @@ Generate security reports containing:
 - Recovery percentage
 - Security recommendations
 
-### 5. Report Export
-
-Reports are generated in:
-
-```text
-reports/
-├── security_audit_report.txt
-└── security_audit_report.csv
-```
+### 5. Unit Testing
+Automated tests validate hash generation, hash identification, input validation, duplicate removal, and unsupported algorithms.
 
 ## 🧪 Testing
 
-Run automated unit tests:
+Run the unit tests:
 
 ```bash
 python -m unittest discover -s tests -v
 ```
 
-The project includes 12 unit tests covering:
+**Development test result: 12/12 tests passed.**
 
-- MD5 hash generation
-- SHA-256 hash generation
-- Hash identification
-- Invalid hash detection
-- Duplicate hash removal
-- Empty hash file validation
-- Unsupported algorithm handling
+## 📊 Sample Data
 
-**Latest test result: 12/12 tests passed.**
+The repository includes synthetic sample hashes for MD5 and SHA-256. These are intended for controlled educational testing.
 
-## 📈 Sample Audit Results
-
-The initial local lab dataset produced the following results:
-
-| Algorithm   |  Total | Cracked | Remaining |
-| ----------- | -----: | ------: | --------: |
-| MD5         |     10 |      10 |         0 |
-| SHA-256     |     11 |      10 |         1 |
-| **Overall** | **21** |  **20** |     **1** |
-
-Overall dictionary recovery rate: **95.24%**
-
-These are results from a synthetic educational dataset, not a benchmark of real-world password security.
+Dictionary recovery results depend on the supplied hashes and wordlist. A successful dictionary recovery does not represent a definitive measurement of real-world password strength.
 
 ## 🔒 Security Recommendations
 
 - Avoid common and predictable passwords.
 - Use unique passwords for every account.
 - Use Argon2id or bcrypt for password storage.
-- Use unique salts for password hashes.
+- Generate a unique salt for each password.
 - Enable Multi-Factor Authentication.
 - Never store plaintext passwords.
 
-**Security note:** MD5 and SHA-256 are not recommended for password storage. Modern password-storage systems should use dedicated password hashing algorithms such as Argon2id.
+**Security note:** MD5 and SHA-256 are not recommended for password storage. Modern applications should use dedicated password hashing algorithms such as Argon2id.
 
 ## ⚠️ Disclaimer
 
 This project is developed strictly for educational purposes and authorized security auditing.
 
-Only use password hashes that you own or have explicit permission to test.
-
-Do not use this tool to access unauthorized accounts, systems, or confidential credentials.
+Only test password hashes that you own or have explicit permission to audit. Do not use this tool to access unauthorized accounts, systems, or confidential credentials.
 
 ## 👨‍💻 Author
 
@@ -245,9 +180,8 @@ Do not use this tool to access unauthorized accounts, systems, or confidential c
 
 Cybersecurity Student | Ethical Hacking | Python | Network Security
 
-GitHub: [https://github.com/nim2328](https://github.com/nim2328)
-
-LinkedIn: [https://www.linkedin.com/in/nirmal-shehan-b40896387/](https://www.linkedin.com/in/nirmal-shehan-b40896387/)
+- GitHub: https://github.com/Nim2328
+- LinkedIn: https://www.linkedin.com/in/nirmal-shehan-b40896387/
 
 ## ⭐ Support
 
@@ -255,6 +189,6 @@ If you find this project useful for learning cybersecurity, consider giving the 
 
 ---
 
-**Project:** Password Hash Auditor
-**Category:** Cybersecurity / Ethical Hacking
+**Project:** Password Hash Auditor  
+**Category:** Cybersecurity / Ethical Hacking  
 **Version:** 1.0.0
