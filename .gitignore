@@ -1,0 +1,35 @@
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+
+# Sensitive John the Ripper files
+*.pot
+*.rec
+*.log
+
+# Environment files
+.env
+.env.*
+
+# Temporary files
+*.tmp
+
+# Local editor files
+.vscode/
+.idea/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+# Local audit reports
+reports/*
+!reports/.gitkeep
+
+# Keep sample documentation
+!docs/examples/
